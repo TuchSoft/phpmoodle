@@ -7,8 +7,10 @@ ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/relea
 RUN chmod +x /usr/local/bin/install-php-extensions
 
 # Update and install some utils
-RUN apt update && apt upgrade -y
-RUN apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt update && \
+    apt upgrade -y && \
+    apt-get update && \
+    apt-get install -y \
     zip \
     unzip \
     wget \
@@ -34,7 +36,7 @@ RUN apt-get update && apt-get install -y \
     jq \
     bash-completion \
     locales \
-    rsync \
+    rsync
 
 
 # oci8 fallisce la prima volta

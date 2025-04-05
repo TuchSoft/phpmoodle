@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Nome e tag dell'immagine
-IMAGE_NAME="phpmoodle"
+IMAGE_NAME="tuchsoft/phpmoodle"
 IMAGE_TAG="latest"
 
 # Puoi passarli come argomenti: ./build.sh nome tag
@@ -18,8 +18,8 @@ docker buildx build \
   --platform linux/amd64 \
   --tag "${IMAGE_NAME}:${IMAGE_TAG}" \
   --file Dockerfile \
-  --no-cache \
   --progress=plain \
+  --push \
   .
 
 # Suggerimento: per usare cache, rimuovi --no-cache

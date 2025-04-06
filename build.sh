@@ -1,21 +1,19 @@
 #!/bin/bash
-
-# Tag dell'immagine
-IMAGE_TAG="latest"
-
 # Puoi passarli come argomenti: ./build.sh nome tag
-if [ "$1" ]; then
-  IMAGE_TAG="latest,$1"
+if [ -z "$1" ]; then
+  echo "Provide tag"
+  exit 1
 fi
+
+IMAGE_TAG=$1
 
 # Comando di build
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --tag "tuchsoft/phpmoodle:${IMAGE_TAG}" \
+  --tag "tuchsoft/phpmoodle:latest" \
   --file Dockerfile \
   --progress=plain \
   --push \
   .
 
-# Suggerimento: per usare cache, rimuovi --no-cache
-# Per push: aggiungi --push se stai usando un registry remoto

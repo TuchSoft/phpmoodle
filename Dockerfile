@@ -64,7 +64,7 @@ RUN install-php-extensions \
     imagick \
     sqlsrv \
     openssl \
-    tokenizer \
+    tokenizer
 
 
 #Install moosh

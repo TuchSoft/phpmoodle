@@ -65,6 +65,7 @@ services:
 #      - "1521:1521"
 #    volumes:
 #      - db_data:/opt/oracle/oradata
+#      # You might want to prepend oci8-perm-fix to the oci_native_moodle_package.sql file
 #      - ./moodle/lib/dml/oci_native_moodle_package.sql:/container-entrypoint-initdb.d/my-init.sql:ro # Edit here
 
 

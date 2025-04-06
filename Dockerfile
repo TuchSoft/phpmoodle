@@ -39,7 +39,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && \
     rsync
 
 
-# oci8 fallisce la prima volta
+# oci8 sometimes fail the first time
 RUN install-php-extensions oci8 || true
 RUN install-php-extensions \
     oci8 \
@@ -74,14 +74,18 @@ RUN wget https://moodle.org/plugins/download.php/34835/moosh_moodle45_2025020800
     && chmod +x /usr/local/bin/moosh \
     && ln -s /usr/local/bin/moosh /usr/bin/moosh
 
-# Creazione directory per Moodle e impostazione permessi
+#Moodle directory & perm
 RUN mkdir /var/www/moodledata && chmod 777 /var/www/moodledata
 RUN usermod -a -G root www-data && chown -R www-data:www-data /var/www/html && chown -R www-data:www-data /var/www/moodledata/
 
+#Config PHP
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+COPY ./php.ini "$PHP_INI_DIR/conf.d/php-custom.ini"
 
 USER www-data
-# Configurazione cron
+
+# Cron
 RUN echo "*/1 * * * * /usr/local/bin/php /var/www/html/admin/cli/cron.php >/dev/null" >> mycron && crontab mycron && rm mycron
 
-# Avvio di Apache
+# Start Apache
 CMD ["apache2-foreground"]

@@ -2,8 +2,9 @@ services:
   moodle:
     image: tuchsoft/phpmoodle:latest
     ports:
-      - "8080:80"
+      - "80:80"
     entrypoint: ["/bin/sh", "-c", "mkdir -p /var/www/moodledata/ && apache2-foreground"]
+    restart: unless-stopped
     volumes:
       - ./moodle:/var/www/html # Edit here
       - moodle_data:/var/www/moodledata

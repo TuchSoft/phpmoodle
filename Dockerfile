@@ -61,9 +61,18 @@ RUN install-php-extensions \
     memcached \
     xmlrpc \
     ldap \
-    imagick
+    imagick \
+    sqlsrv \
+    openssl \
+    tokenizer \
 
 
+#Install moosh
+RUN wget https://moodle.org/plugins/download.php/34835/moosh_moodle45_2025020800.zip -O /tmp/moosh.zip \
+    && unzip /tmp/moosh.zip -d /usr/local/bin/ \
+    && rm /tmp/moosh.zip \
+    && chmod +x /usr/local/bin/moosh \
+    && ln -s /usr/local/bin/moosh /usr/bin/moosh
 
 # Creazione directory per Moodle e impostazione permessi
 RUN mkdir /var/www/moodledata && chmod 777 /var/www/moodledata

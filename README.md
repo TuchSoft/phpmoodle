@@ -28,7 +28,7 @@ curl -o docker-compose.yml https://raw.githubusercontent.com/TuchSoft/phpmoodle/
 ```
 or
 ```bash
-wget docker-compose.yml https://raw.githubusercontent.com/TuchSoft/phpmoodle/refs/heads/master/docker-compose.yml
+wget https://raw.githubusercontent.com/TuchSoft/phpmoodle/refs/heads/master/docker-compose.yml
 ```
 
 Make sure your Moodle codebase is available locally and ready to bind.

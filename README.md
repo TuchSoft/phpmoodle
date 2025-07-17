@@ -1,4 +1,7 @@
 # Moodle Quick Test Environment
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
+[![Copyright: Tuchsoft](https://img.shields.io/badge/%C2%A9-Tuchsoft-7519e2.svg)](https://tuchsoft.com)
+
 
 This project provides a lightweight and easy-to-use **Docker image** with an optional **Docker Compose** file to quickly spin up a Moodle instance for **development**, **testing**, or **local evaluation** purposes.  
 It is designed to be simpler and faster than the official Moodle development images, with no additional testing frameworks, no FPM, and no OPcache — just **Apache + PHP** with all necessary extensions pre-installed to support **all common Moodle databases**.
@@ -136,6 +139,19 @@ If using the provided compose setup  that's all all you need to do, an automatic
 - **Ports already in use**: Change the ports in `docker-compose.yml` if needed.
 - **Database connection problems**: Make sure the database service is fully initialized before starting Moodle installation.
 
----
-> **Author:** Mattia Bonzi [[mattia@tuchsoft.com](mailto:mattia@tuchsoft.com)] | [TuchSoft OÜ](https://tuchsoft.com)  
-> **License:** [MIT License](https://opensource.org/licenses/MIT)
+
+## Author
+
+👤 **Mattia Bonzi @ [TuchSoft](https://tuchsoft.com) <mattia@tuchsoft.com>**
+
+* Website: [tuchsoft.com](https://tuchsoft.com)
+* Github: [@tuchsoft](https://github.com/tuchsoft)
+
+[![TuchSoft logo](https://tuchsoft.com/assets/logo/logo-dark.png)](https://tuchsoft.com)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check [issues page](github.com/tuchsoft/commonmark-ext-heading-shifter/issues). 
+

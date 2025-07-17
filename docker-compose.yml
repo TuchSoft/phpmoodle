@@ -3,7 +3,7 @@ services:
   server:
     image: tuchsoft/phpmoodle:latest
     ports:
-      - "8080:80"
+      - "${MOODLE_WEB_PORT:-8080}:80"
     entrypoint: ["/bin/sh", "-c", "mkdir -p /var/www/moodledata/ && apache2-foreground"]
     restart: unless-stopped
     volumes:
@@ -11,6 +11,7 @@ services:
       - moodle_data:/var/www/moodledata
     depends_on:
       - database
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
 
   # --- PostgreSQL Block ---
   database:
@@ -23,7 +24,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5432"
 
 #  # --- MySQL/MariaDB Block ---
 #   database:

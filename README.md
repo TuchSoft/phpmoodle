@@ -37,8 +37,9 @@ wget https://raw.githubusercontent.com/TuchSoft/phpmoodle/refs/heads/master/dock
 Make sure your Moodle codebase is available locally and ready to bind.
 
 #### 2. Edit the `docker-compose.yml`:
-    - Make sure the path to your local Moodle source (`./moodle`) is correctly set.
-    - Uncomment the database block you want to use (PostgreSQL, MySQL/MariaDB, SQL Server, Oracle).
+- Make sure the path to your local Moodle source (`./moodle`) is correctly set.
+- Uncomment the database block you want to use (PostgreSQL, MySQL/MariaDB, SQL Server, Oracle).
+
 
 #### 3. Start the environment:
 ```bash
@@ -47,7 +48,7 @@ docker-compose up -d
 
 ---
 
-### Using only Docker
+### Using Docker
 
 
 
@@ -153,5 +154,5 @@ If using the provided compose setup  that's all all you need to do, an automatic
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](github.com/tuchsoft/commonmark-ext-heading-shifter/issues). 
+Feel free to check the [issues page](https://github.com/tuchsoft/phpmoodle/issues). 
 

@@ -1,4 +1,4 @@
-name: moodle #Edit the name to run multiple version
+name: ${MOODLE_PROJECT_NAME:-moodle} #Edit the name to run multiple version
 services:
   server:
     image: tuchsoft/phpmoodle:latest

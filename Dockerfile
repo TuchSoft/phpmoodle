@@ -43,7 +43,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && \
 RUN install-php-extensions oci8 || true
 RUN install-php-extensions oci8
 RUN install-php-extensions \
-    oci8 \
+    xdebug \
     zip \
     gd \
     intl \
@@ -67,7 +67,7 @@ RUN install-php-extensions \
     openssl \
     tokenizer
 
-
+    
 #Install moosh
 RUN wget https://moodle.org/plugins/download.php/34835/moosh_moodle45_2025020800.zip -O /tmp/moosh.zip \
     && unzip /tmp/moosh.zip -d /usr/local/bin/ \

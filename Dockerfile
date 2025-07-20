@@ -82,6 +82,13 @@ RUN usermod -a -G root www-data && chown -R www-data:www-data /var/www/html && c
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 COPY ./php.ini "$PHP_INI_DIR/conf.d/php-custom.ini"
 
+#Intsall nvm and nodejs
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
+~/.nvm/nvm.sh install lts && \
+ln -s ~/.nvm/nvm.sh /usr/local/bin/ && \
+ln -s ~/.nvm/versions/node/v22.17.1/bin/* /usr/local/bin/
+
+
 # Cron
 RUN echo "*/1 * * * * /usr/local/bin/php /var/www/html/admin/cli/cron.php >/dev/null" >> /tmp/mycron &&  crontab -u www-data /tmp/mycron && rm /tmp/mycron
 

@@ -89,6 +89,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | b
 ln -s ~/.nvm/nvm.sh /usr/local/bin/ && \
 ln -s ~/.nvm/versions/node/v22.17.1/bin/* /usr/local/bin/
 
+#Copy xdebug config
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
 
 # Cron
 RUN echo "*/1 * * * * /usr/local/bin/php /var/www/html/admin/cli/cron.php >/dev/null" >> /tmp/mycron &&  crontab -u www-data /tmp/mycron && rm /tmp/mycron

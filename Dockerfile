@@ -41,6 +41,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && \
 
 # oci8 sometimes fail the first time
 RUN install-php-extensions oci8 || true
+RUN install-php-extensions oci8
 RUN install-php-extensions \
     oci8 \
     zip \

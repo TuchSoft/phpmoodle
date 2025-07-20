@@ -1,6 +1,6 @@
 name: moodle #Edit the name to run multiple version
 services:
-  server:
+  webserver:
     image: tuchsoft/phpmoodle:latest
     ports:
       - "${MOODLE_WEB_PORT:-8080}:80"

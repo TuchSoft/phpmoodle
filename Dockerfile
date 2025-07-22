@@ -84,11 +84,9 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 COPY ./php.ini "$PHP_INI_DIR/conf.d/php-custom.ini"
 
 #Intsall nvm and nodejs
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
-~/.nvm/nvm.sh install lts && \
-ln -s ~/.nvm/nvm.sh /usr/local/bin/ && \
-ln -s ~/.nvm/versions/node/v22.17.1/bin/* /usr/local/bin/
-
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt install -y nodejs
+RUN node -v && npm -v
 #Copy xdebug config
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 

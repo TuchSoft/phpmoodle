@@ -4,6 +4,8 @@ USER root
 
 # Add "install-php-extensions" script
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions
+
 
 # Add Node.js repository and install common development utilities
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
@@ -83,6 +85,13 @@ RUN wget https://moodle.org/plugins/download.php/34835/moosh_moodle45_2025020800
     && chmod +x /usr/local/bin/moosh \
     && ln -s /usr/local/bin/moosh /usr/bin/moosh \
     && rm -rf /tmp/*
+
+#Install Composer
+RUN wget -O composer-setup.php https://getcomposer.org/installer && \
+    php composer-setup.php && \
+    rm -f composer-setup.php && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod +x /usr/local/bin/composer
 
 # Moodle directory & permissions
 RUN mkdir -p /var/www/moodledata && \
